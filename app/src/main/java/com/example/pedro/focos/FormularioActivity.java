@@ -1,22 +1,79 @@
 package com.example.pedro.focos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Toast;
+
+import com.example.pedro.focos.modelo.Tarefa;
+
+import java.util.Date;
 
 public class FormularioActivity extends AppCompatActivity {
+
+    private DatePicker datePicker_fin;
+    private DatePicker datePicker_ini;
+    private FormularioHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-        DatePicker datePicker_ini = (DatePicker) findViewById(R.id.data_inicial);
-        DatePicker datePicker_fin = (DatePicker) findViewById(R.id.data_final);
+        datePicker_ini = (DatePicker) findViewById(R.id.formulario_data_incial);
+        datePicker_fin = (DatePicker) findViewById(R.id.formulario_data_final);
         datePicker_ini.setMinDate(System.currentTimeMillis());
         datePicker_fin.setMinDate(System.currentTimeMillis());
-        NumberPicker hora_foco = (NumberPicker) findViewById(R.id.foco_diario);
+        NumberPicker hora_foco = (NumberPicker) findViewById(R.id.formulario_foco_diario);
         hora_foco.setMaxValue(24);
         hora_foco.setMinValue(1);
+
+        helper = new FormularioHelper(this);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_formulario, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_formulario_ok:
+                if (valDados()) {
+                    Tarefa tarefa = helper.pegaTarefa();
+                    Toast.makeText(FormularioActivity.this, "Tarefa:" + tarefa.getNome(), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else
+                    Toast.makeText(FormularioActivity.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean valDados() {
+
+        datePicker_ini = (DatePicker) findViewById(R.id.formulario_data_incial);
+        Date dataIni = new Date(datePicker_ini.getYear(),datePicker_ini.getMonth(),datePicker_ini.getDayOfMonth());
+
+        datePicker_fin = (DatePicker) findViewById(R.id.formulario_data_final);
+        Date dataFin = new Date(datePicker_fin.getYear(),datePicker_fin.getMonth(),datePicker_fin.getDayOfMonth());
+
+        if (dataIni.getTime() > dataFin.getTime())
+            return false;
+        return true;
     }
 }
