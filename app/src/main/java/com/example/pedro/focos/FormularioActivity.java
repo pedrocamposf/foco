@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.example.pedro.focos.dao.TarefaDAO;
 import com.example.pedro.focos.modelo.Tarefa;
 
 import java.util.Date;
@@ -27,15 +28,24 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-        datePicker_ini = (DatePicker) findViewById(R.id.formulario_data_incial);
-        datePicker_fin = (DatePicker) findViewById(R.id.formulario_data_final);
-        datePicker_ini.setMinDate(System.currentTimeMillis());
-        datePicker_fin.setMinDate(System.currentTimeMillis());
+
+        Intent intent = getIntent();
+        Tarefa tarefa = (Tarefa) intent.getSerializableExtra("tarefa");
+        helper = new FormularioHelper(this);
+
         NumberPicker hora_foco = (NumberPicker) findViewById(R.id.formulario_foco_diario);
         hora_foco.setMaxValue(24);
         hora_foco.setMinValue(1);
 
-        helper = new FormularioHelper(this);
+        if (tarefa == null) {
+            datePicker_ini = (DatePicker) findViewById(R.id.formulario_data_incial);
+            datePicker_fin = (DatePicker) findViewById(R.id.formulario_data_final);
+            datePicker_ini.setMinDate(System.currentTimeMillis());
+            datePicker_fin.setMinDate(System.currentTimeMillis());
+        }
+        else {
+            helper.preencheFormulario(tarefa, this);
+        }
 
     }
 
@@ -52,8 +62,18 @@ public class FormularioActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
                 if (valDados()) {
-                    Tarefa tarefa = helper.pegaTarefa();
-                    Toast.makeText(FormularioActivity.this, "Tarefa:" + tarefa.getNome(), Toast.LENGTH_SHORT).show();
+                    Tarefa tarefa = helper.pegaTarefa(this);
+                    TarefaDAO dao = new TarefaDAO(this);
+
+                    if (tarefa.getId() != 0) {
+                        dao.altera(tarefa);
+                        Toast.makeText(FormularioActivity.this, "Tarefa: " + tarefa.getNome() + " atualizada!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        dao.insere(tarefa);
+                        Toast.makeText(FormularioActivity.this, "Tarefa: " + tarefa.getNome() + " criada!", Toast.LENGTH_SHORT).show();
+                    }
+                    dao.close();
                     finish();
                 }
                 else
