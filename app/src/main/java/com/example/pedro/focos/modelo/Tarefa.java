@@ -1,31 +1,40 @@
 package com.example.pedro.focos.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by pedro on 09/04/2017.
  */
-public class Tarefa {
+public class Tarefa implements Serializable {
 
     private long id;
     private String nome;
-    private Date dataIni;
-    private Date datafin;
+    private long dataIni;
+    private long dataFin;
     private int horas;
 
-    public long getId() {
-        return id;
+    public int getHoras() {
+        return horas;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setHoras(int horas) {
+        this.horas = horas;
     }
 
-    public Date getDataIni() {
+    public long getDataFin() {
+        return dataFin;
+    }
+
+    public void setDataFin(long dataFin) {
+        this.dataFin = dataFin;
+    }
+
+    public long getDataIni() {
         return dataIni;
     }
 
-    public void setDataIni(Date dataIni) {
+    public void setDataIni(long dataIni) {
         this.dataIni = dataIni;
     }
 
@@ -37,19 +46,16 @@ public class Tarefa {
         this.nome = nome;
     }
 
-    public Date getDatafin() {
-        return datafin;
+    public long getId() {
+        return id;
     }
 
-    public void setDatafin(Date datafin) {
-        this.datafin = datafin;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public int getHoras() {
-        return horas;
-    }
-
-    public void setHoras(int horas) {
-        this.horas = horas;
+    @Override
+    public String toString() {
+        return getId() + "-" + getNome();
     }
 }
