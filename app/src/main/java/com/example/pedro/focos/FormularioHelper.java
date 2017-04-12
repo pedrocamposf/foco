@@ -32,7 +32,7 @@ public class FormularioHelper {
 
     }
 
-    public Tarefa pegaTarefa(FormularioActivity a) {
+    public Tarefa pegaTarefa() {
 
         tarefa.setNome(campoNome.getText().toString());
 
@@ -47,7 +47,7 @@ public class FormularioHelper {
         return tarefa;
     }
 
-    public void preencheFormulario(Tarefa tarefa, FormularioActivity a) {
+    public void preencheFormulario(Tarefa tarefa) {
 
         campoNome.setText(tarefa.getNome());
 

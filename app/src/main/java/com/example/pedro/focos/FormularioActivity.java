@@ -44,7 +44,7 @@ public class FormularioActivity extends AppCompatActivity {
             datePicker_fin.setMinDate(System.currentTimeMillis());
         }
         else {
-            helper.preencheFormulario(tarefa, this);
+            helper.preencheFormulario(tarefa);
         }
 
     }
@@ -62,7 +62,7 @@ public class FormularioActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
                 if (valDados()) {
-                    Tarefa tarefa = helper.pegaTarefa(this);
+                    Tarefa tarefa = helper.pegaTarefa();
                     TarefaDAO dao = new TarefaDAO(this);
 
                     if (tarefa.getId() != 0) {
