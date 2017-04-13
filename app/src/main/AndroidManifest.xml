@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FormularioActivity"/>
+        <activity android:name=".FocoActivity"/>
     </application>
 
 </manifest>

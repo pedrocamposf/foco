@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
@@ -95,5 +92,12 @@ public class FormularioActivity extends AppCompatActivity {
         if (dataIni.getTime() > dataFin.getTime())
             return false;
         return true;
+    }
+
+    /**
+     * Created by pedro on 12/04/2017.
+     */
+
+    public static class FocoActivity {
     }
 }
