@@ -32,6 +32,16 @@ public class ListaTarefasActivity extends AppCompatActivity {
 
         listaTarefas = (ListView) findViewById(R.id.lista_tarefas);
 
+        listaTarefas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> lista, View item, int position, long id) {
+                Tarefa tarefa = (Tarefa) listaTarefas.getItemAtPosition(position);
+                Toast.makeText(ListaTarefasActivity.this, "Foco na tarefa " + tarefa.getNome() + "!!",Toast.LENGTH_SHORT).show();
+                Intent intentFoco = new Intent(ListaTarefasActivity.this, FocoActivity.class);
+                startActivity(intentFoco);
+            }
+        });
+
         Button novaTarefa = (Button) findViewById(R.id.lista_botao_salvar);
         novaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
