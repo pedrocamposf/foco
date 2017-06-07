@@ -38,6 +38,7 @@ public class ListaTarefasActivity extends AppCompatActivity {
                 Tarefa tarefa = (Tarefa) listaTarefas.getItemAtPosition(position);
                 Toast.makeText(ListaTarefasActivity.this, "Foco na tarefa " + tarefa.getNome() + "!!",Toast.LENGTH_SHORT).show();
                 Intent intentFoco = new Intent(ListaTarefasActivity.this, FocoActivity.class);
+                intentFoco.putExtra("tarefa", tarefa);
                 startActivity(intentFoco);
             }
         });
@@ -58,7 +59,7 @@ public class ListaTarefasActivity extends AppCompatActivity {
     private void carregaLista() {
 
         TarefaDAO dao = new TarefaDAO(this);
-        List<Tarefa> tarefas = dao.buscaAlunos();
+        List<Tarefa> tarefas = dao.buscaTarefas();
         dao.close();
 
 

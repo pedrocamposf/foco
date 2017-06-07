@@ -10,12 +10,18 @@ import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.pedro.focos.dao.TarefaDAO;
+import com.example.pedro.focos.modelo.Tarefa;
+
 /**
  * Created by pedro on 12/04/2017.
  */
 public class FocoActivity extends AppCompatActivity {
 
     private Chronometer tempo;
+    private Tarefa tarefa;
+    private TarefaDAO dao;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +29,22 @@ public class FocoActivity extends AppCompatActivity {
         tempo = (Chronometer) findViewById(R.id.foco_tempo);
         tempo.start();
 
+        Intent intent = getIntent();
+        tarefa = (Tarefa) intent.getSerializableExtra("tarefa");
+        dao = new TarefaDAO(this);
+
         ImageButton stopFoco = (ImageButton) findViewById(R.id.foco_button_stop);
 
         stopFoco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 long elapsedMillis = SystemClock.elapsedRealtime() - tempo.getBase();
-                Toast.makeText(FocoActivity.this, "Elapsed milliseconds: " + elapsedMillis,
-                        Toast.LENGTH_SHORT).show();
-                
-                //// TODO: 12/04/2017 salvar tempor no banco 
+
+                tarefa.setFoco(tarefa.getFoco() + elapsedMillis);
+                if (tarefa.getId() != 0) {
+                    dao.altera(tarefa);
+                    Toast.makeText(FocoActivity.this, "Mantenha o Foco!!", Toast.LENGTH_SHORT).show();
+                }
                 
                 Intent intentStopFoco = new Intent(FocoActivity.this, ListaTarefasActivity.class);
                 startActivity(intentStopFoco);

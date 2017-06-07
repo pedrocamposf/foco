@@ -28,7 +28,8 @@ public class TarefaDAO extends SQLiteOpenHelper {
                 " nome TEXT NOT NULL," +
                 " dataini INTEGER," +
                 " datafin INTEGER," +
-                " horas INTEGER);";
+                " horas INTEGER," +
+                " foco INTEGER);";
         db.execSQL(sql);
 
     }
@@ -53,11 +54,12 @@ public class TarefaDAO extends SQLiteOpenHelper {
         dados.put("nome", tarefa.getNome());
         dados.put("dataini", tarefa.getDataIni());
         dados.put("datafin", tarefa.getDataFin());
-        dados.put("horas",tarefa.getHoras());
+        dados.put("horas", tarefa.getHoras());
+        dados.put("foco", tarefa.getFoco());
         return dados;
     }
 
-    public List<Tarefa> buscaAlunos() {
+    public List<Tarefa> buscaTarefas() {
         String sql = "SELECT * FROM Tarefas";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -70,7 +72,7 @@ public class TarefaDAO extends SQLiteOpenHelper {
             tarefa.setDataIni(c.getLong(c.getColumnIndex("dataini")));
             tarefa.setDataFin(c.getLong(c.getColumnIndex("datafin")));
             tarefa.setHoras(c.getInt(c.getColumnIndex("horas")));
-
+            tarefa.setFoco(c.getLong(c.getColumnIndex("foco")));
             tarefas.add(tarefa);
         }
         c.close();
@@ -91,4 +93,5 @@ public class TarefaDAO extends SQLiteOpenHelper {
         String [] params = {Long.toString(tarefa.getId())};
         db.update("Tarefas", dados, "id = ?", params);
     }
+
 }

@@ -13,6 +13,15 @@ public class Tarefa implements Serializable {
     private long dataIni;
     private long dataFin;
     private int horas;
+    private long foco;
+
+    public long getFoco() {
+        return foco;
+    }
+
+    public void setFoco(long foco) {
+        this.foco = foco;
+    }
 
     public int getHoras() {
         return horas;
