@@ -64,11 +64,11 @@ public class FormularioActivity extends AppCompatActivity {
 
                     if (tarefa.getId() != 0) {
                         dao.altera(tarefa);
-                        Toast.makeText(FormularioActivity.this, "Tarefa: " + tarefa.getNome() + " atualizada!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormularioActivity.this, "Tarefa " + tarefa.getNome() + " atualizada!", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         dao.insere(tarefa);
-                        Toast.makeText(FormularioActivity.this, "Tarefa: " + tarefa.getNome() + " criada!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormularioActivity.this, "Tarefa " + tarefa.getNome() + " criada!", Toast.LENGTH_SHORT).show();
                     }
                     dao.close();
                     finish();
