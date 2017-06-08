@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.example.pedro.focos.adapter.TarefaAdapter;
 import com.example.pedro.focos.dao.TarefaDAO;
 import com.example.pedro.focos.modelo.Tarefa;
 
@@ -62,8 +63,7 @@ public class ListaTarefasActivity extends AppCompatActivity {
         List<Tarefa> tarefas = dao.buscaTarefas();
         dao.close();
 
-
-        ArrayAdapter<Tarefa> adapter= new ArrayAdapter<Tarefa>(this, android.R.layout.simple_list_item_1, tarefas);
+        TarefaAdapter adapter = new TarefaAdapter(this, tarefas);
         listaTarefas.setAdapter(adapter);
     }
 
