@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tarefa:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_nome"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Inicial:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_data_ini"
+            android:text="08/06/2017"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Final:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_data_fin"
+            android:text="29/06/2017"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foco Diario:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_tempo_foco"
+            android:text="2 Horas"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esperado:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_esperado"
+            android:text="80%"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feito:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_feito"
+            android:text="80%"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <ImageView
+            android:layout_width="115dp"
+            android:layout_height="43dp"
+            android:id="@+id/relatorio_img"
+            android:background="@drawable/ok"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>/>
+    </RelativeLayout>
+
+</LinearLayout>

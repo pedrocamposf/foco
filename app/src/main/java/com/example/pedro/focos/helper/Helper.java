@@ -1,4 +1,4 @@
-package com.example.pedro.focos;
+package com.example.pedro.focos.helper;
 
 import android.app.Activity;
 import android.widget.DatePicker;
@@ -6,6 +6,9 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.example.pedro.focos.FormularioActivity;
+import com.example.pedro.focos.R;
+import com.example.pedro.focos.RelatorioActivity;
 import com.example.pedro.focos.modelo.Tarefa;
 
 import java.util.Date;
@@ -14,7 +17,7 @@ import java.util.Date;
  * Created by pedro on 09/04/2017.
  */
 
-public class FormularioHelper {
+public class Helper {
 
     private final EditText campoNome;
     private final DatePicker campoDataIni;
@@ -22,7 +25,7 @@ public class FormularioHelper {
     private final NumberPicker campoHoras;
     private Tarefa tarefa;
 
-    public FormularioHelper(FormularioActivity activity ){
+    public Helper(Activity activity ){
 
         campoNome = (EditText) activity.findViewById(R.id.formulario_nome);
         campoDataIni = (DatePicker) activity.findViewById(R.id.formulario_data_incial);
@@ -31,6 +34,8 @@ public class FormularioHelper {
         tarefa = new Tarefa();
 
     }
+
+
 
     public Tarefa pegaTarefa() {
 

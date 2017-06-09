@@ -11,6 +11,7 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.example.pedro.focos.dao.TarefaDAO;
+import com.example.pedro.focos.helper.Helper;
 import com.example.pedro.focos.modelo.Tarefa;
 
 import java.util.Date;
@@ -19,7 +20,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     private DatePicker datePicker_fin;
     private DatePicker datePicker_ini;
-    private FormularioHelper helper;
+    private Helper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Tarefa tarefa = (Tarefa) intent.getSerializableExtra("tarefa");
-        helper = new FormularioHelper(this);
+        helper = new Helper(this);
 
         NumberPicker hora_foco = (NumberPicker) findViewById(R.id.formulario_foco_diario);
         hora_foco.setMaxValue(24);
