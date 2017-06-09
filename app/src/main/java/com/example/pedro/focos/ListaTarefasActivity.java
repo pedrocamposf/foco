@@ -105,6 +105,20 @@ public class ListaTarefasActivity extends AppCompatActivity {
             }
         });
 
+        MenuItem relatorio = menu.add("Relatório");
+        relatorio.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                Tarefa tarefa = (Tarefa) listaTarefas.getItemAtPosition(info.position);
+
+                Intent intentVaiProRelatorio = new Intent(ListaTarefasActivity.this, RelatorioActivity.class);
+                intentVaiProRelatorio.putExtra("tarefa", tarefa);
+                startActivity(intentVaiProRelatorio);
+                return false;
+            }
+        });
+
     }
 
 }
