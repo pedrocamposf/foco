@@ -129,6 +129,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Decorrido:"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_decorrido"
+            android:text="80%"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Feito:"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -163,7 +188,6 @@
             android:layout_width="115dp"
             android:layout_height="43dp"
             android:id="@+id/relatorio_img"
-            android:background="@drawable/ok"
 
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"/>/>

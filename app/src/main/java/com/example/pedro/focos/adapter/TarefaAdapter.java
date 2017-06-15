@@ -52,24 +52,22 @@ public class TarefaAdapter extends BaseAdapter {
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
         campoNome.setText(tarefa.getNome());
 
-        long days = ((tarefa.getDataFin() - tarefa.getDataIni()) / (1000*60*60*24)) + 1;
+        double tempoDecorrido = (((System.currentTimeMillis() - tarefa.getDataIni()) / (86400000.00))) * tarefa.getHoras();
 
-        int tempo = (int) (days*tarefa.getHoras());
-
-        int tempoFoco;
+        double tempoFoco;
         if (tarefa.getFoco() == 0)
-            tempoFoco = 0;
+            tempoFoco = tarefa.getFoco();
         else
-            tempoFoco = (int) tarefa.getFoco() / (1000*60*60);
+            tempoFoco = (tarefa.getFoco() / (3600000.00));
 
         ImageView img1 = (ImageView) view.findViewById(R.id.img_ok);
         ImageView img2 = (ImageView) view.findViewById(R.id.img_atencao);
         ImageView img3 = (ImageView) view.findViewById(R.id.img_cuidado);
 
-        if ( tempoFoco < tempo/3) {
+        if ( tempoFoco > tempoDecorrido/3) {
             img1.setImageResource(R.drawable.ok);
         }
-        else if (tempoFoco < tempo/2) {
+        else if (tempoFoco > tempoDecorrido/2) {
             img1.setImageResource(R.drawable.atencao);
             img2.setImageResource(R.drawable.atencao);
         }
@@ -78,9 +76,6 @@ public class TarefaAdapter extends BaseAdapter {
             img2.setImageResource(R.drawable.cuidado);
             img3.setImageResource(R.drawable.cuidado);
         }
-
-
-
 
         return view;
     }

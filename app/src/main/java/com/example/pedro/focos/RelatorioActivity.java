@@ -36,6 +36,7 @@ public class RelatorioActivity extends AppCompatActivity {
         TextView focoDiario = (TextView) this.findViewById(R.id.relatorio_tempo_foco);
         TextView esperado = (TextView) this.findViewById(R.id.relatorio_esperado);
         TextView feito = (TextView) this.findViewById(R.id.relatorio_feito);
+        TextView decorrido = (TextView) this.findViewById(R.id.relatorio_decorrido);
         ImageView img = (ImageView) this.findViewById(R.id.relatorio_img);
 
         java.util.Date dateIni = new java.util.Date(tarefa.getDataIni());
@@ -43,7 +44,7 @@ public class RelatorioActivity extends AppCompatActivity {
 
         nome.setText(tarefa.getNome());
 
-        SimpleDateFormat dataP = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat dataP = new SimpleDateFormat("dd/MM/yyyy");
 
         StringBuilder ini = new StringBuilder( dataP.format( dateIni ) );
         dataIni.setText(ini);
@@ -57,33 +58,42 @@ public class RelatorioActivity extends AppCompatActivity {
         else
             horas = tarefa.getHoras();
 
-        focoDiario.setText(Integer.toString(horas) + " Horas");
+        focoDiario.setText(Integer.toString(horas) + " hr");
 
         long days = ((tarefa.getDataFin() - tarefa.getDataIni()) / (1000*60*60*24)) + 1;
         int tempo = (int) (days*tarefa.getHoras());
-        esperado.setText(Integer.toString(tempo) + " Horas");
 
-        Long tempoFoco;
+        double tempoDecorrido = (((System.currentTimeMillis() - tarefa.getDataIni()) / (86400000.00))) * tarefa.getHoras();
+
+        esperado.setText(Integer.toString(tempo) + " hr");
+
+        double tempoFoco;
         if (tarefa.getFoco() == 0)
             tempoFoco = tarefa.getFoco();
         else
-            tempoFoco = (tarefa.getFoco() / (1000*60*60));
+            tempoFoco = (tarefa.getFoco() / (3600000.00));
 
+        decorrido.setText(String.format("%.3f",tempoDecorrido) + " hr");
 
-        feito.setText(Long.toString(tempoFoco));
+        feito.setText(String.format("%.3f",tempoFoco) + " hr");
 
-        if ( tempoFoco < tempo/3) {
+        if ( tempoFoco > tempoDecorrido/3.00) {
             img.setImageResource(R.drawable.ok);
         }
-        else if (tempoFoco < tempo/2) {
+        if (tempoFoco > tempoDecorrido/2.00) {
             img.setImageResource(R.drawable.atencao);
         }
         else {
             img.setImageResource(R.drawable.cuidado);
         }
 
+    }
 
-
+    private String validaPl(int i) {
+        if (i == 1)
+            return " ";
+        else
+            return "s";
     }
 
     @Override
