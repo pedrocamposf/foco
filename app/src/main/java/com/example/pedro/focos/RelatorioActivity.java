@@ -73,14 +73,14 @@ public class RelatorioActivity extends AppCompatActivity {
         else
             tempoFoco = (tarefa.getFoco() / (3600000.00));
 
-        decorrido.setText(String.format("%.3f",tempoDecorrido) + " hr");
+        decorrido.setText(String.format("%.2f",tempoDecorrido) + " hr");
 
-        feito.setText(String.format("%.3f",tempoFoco) + " hr");
+        feito.setText(String.format("%.2f",tempoFoco) + " hr");
 
         if ( tempoFoco > tempoDecorrido/3.00) {
             img.setImageResource(R.drawable.ok);
         }
-        if (tempoFoco > tempoDecorrido/2.00) {
+        else if (tempoFoco > tempoDecorrido/2.00) {
             img.setImageResource(R.drawable.atencao);
         }
         else {
