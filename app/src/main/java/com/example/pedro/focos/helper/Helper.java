@@ -41,10 +41,9 @@ public class Helper {
 
         tarefa.setNome(campoNome.getText().toString());
 
-        Date dataIni = new Date(campoDataIni.getYear(),campoDataIni.getMonth(),campoDataIni.getDayOfMonth());
+        Date dataIni = new Date(campoDataIni.getYear() - 1900,campoDataIni.getMonth(),campoDataIni.getDayOfMonth());
         tarefa.setDataIni(dataIni.getTime());
-
-        Date dataFin = new Date(campoDataFin.getYear(),campoDataFin.getMonth(),campoDataFin.getDayOfMonth());
+        Date dataFin = new Date(campoDataFin.getYear() - 1900,campoDataFin.getMonth(),campoDataFin.getDayOfMonth());
         tarefa.setDataFin(dataFin.getTime());
 
         tarefa.setHoras(campoHoras.getValue());
@@ -58,10 +57,10 @@ public class Helper {
 
         Date dataI = new Date(tarefa.getDataIni());
 
-        campoDataIni.updateDate(dataI.getYear(),dataI.getMonth(),dataI.getDate());
+        campoDataIni.updateDate(dataI.getYear() + 1900,dataI.getMonth(),dataI.getDate());
 
         Date dataF = new Date(tarefa.getDataFin());
-        campoDataFin.updateDate(dataF.getYear(),dataF.getMonth(),dataF.getDate());
+        campoDataFin.updateDate(dataF.getYear() + 1900,dataF.getMonth(),dataF.getDate());
 
         campoHoras.setValue(tarefa.getHoras());
         this.tarefa = tarefa;
