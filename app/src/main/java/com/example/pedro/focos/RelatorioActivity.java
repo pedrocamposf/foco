@@ -38,6 +38,10 @@ public class RelatorioActivity extends AppCompatActivity {
         TextView feito = (TextView) this.findViewById(R.id.relatorio_feito);
         TextView decorrido = (TextView) this.findViewById(R.id.relatorio_decorrido);
         ImageView img = (ImageView) this.findViewById(R.id.relatorio_img);
+        TextView click = (TextView) this.findViewById(R.id.relatorio_clicks);
+        TextView tempo1 = (TextView) this.findViewById(R.id.relatorio_tempo1);
+        TextView tempo2 = (TextView) this.findViewById(R.id.relatorio_tempo2);
+        TextView tempo3 = (TextView) this.findViewById(R.id.relatorio_tempo3);
 
         java.util.Date dateIni = new java.util.Date(tarefa.getDataIni());
         java.util.Date dateFin = new java.util.Date(tarefa.getDataFin());
@@ -63,7 +67,7 @@ public class RelatorioActivity extends AppCompatActivity {
         long days = ((tarefa.getDataFin() - tarefa.getDataIni()) / (1000*60*60*24)) + 1;
         int tempo = (int) (days*tarefa.getHoras());
 
-        double tempoDecorrido = (((System.currentTimeMillis() - tarefa.getDataIni()) / (86400000.00))) * tarefa.getHoras();
+        double tempoDecorrido = (((System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni())) / (86400000.00))) * tarefa.getHoras();
 
         esperado.setText(Integer.toString(tempo) + " hr");
 
@@ -77,6 +81,12 @@ public class RelatorioActivity extends AppCompatActivity {
 
         feito.setText(String.format("%.2f",tempoFoco) + " hr");
 
+        click.setText(Integer.toString(tarefa.getclick()));
+
+        tempo1.setText(Integer.toString(tarefa.getTempo1()));
+        tempo2.setText(Integer.toString(tarefa.getTempo2()));
+        tempo3.setText(Integer.toString(tarefa.getTempo3()));
+
         if ( tempoFoco > tempoDecorrido/3.00) {
             img.setImageResource(R.drawable.ok);
         }
@@ -88,6 +98,8 @@ public class RelatorioActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     private String validaPl(int i) {
         if (i == 1)

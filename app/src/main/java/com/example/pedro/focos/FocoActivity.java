@@ -31,19 +31,34 @@ public class FocoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         tarefa = (Tarefa) intent.getSerializableExtra("tarefa");
+        tarefa.setclick(tarefa.getclick() + 1);
+
         dao = new TarefaDAO(this);
 
         ImageButton stopFoco = (ImageButton) findViewById(R.id.foco_button_stop);
-
         stopFoco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 long elapsedMillis = SystemClock.elapsedRealtime() - tempo.getBase();
 
                 tarefa.setFoco(tarefa.getFoco() + elapsedMillis);
+
+                long days = ((tarefa.getDataFin() - tarefa.getDataIni()) / (1000*60*60*24)) + 1;
+                double tempo = (days*tarefa.getHoras()) / 3.00;
+
+                double tempoDecorrido = (((System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni())) / (86400000.00)));
+
+                if (tempoDecorrido < tempo)
+                    tarefa.setTempo1(tarefa.getTempo1() + 1);
+                else if (tempoDecorrido < tempo * 2)
+                    tarefa.setTempo2(tarefa.getTempo2() + 1);
+                else
+                    tarefa.setTempo3(tarefa.getTempo3() + 1);
+
+
                 if (tarefa.getId() != 0) {
                     dao.altera(tarefa);
-                    Toast.makeText(FocoActivity.this, "Mantenha o Foco!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FocoActivity.this, "Mantenha o Foco!!" , Toast.LENGTH_SHORT).show();
                 }
                 
                 Intent intentStopFoco = new Intent(FocoActivity.this, ListaTarefasActivity.class);

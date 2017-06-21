@@ -10,7 +10,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tarefa:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_nome"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data Inicial:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_data_ini"
             android:text="08/06/2017"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Data Final:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_data_fin"
             android:text="29/06/2017"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Foco Diario:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_tempo_foco"
             android:text="2 Horas"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esperado:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_esperado"
             android:text="80%"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Decorrido:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_decorrido"
             android:text="80%"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Feito:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
@@ -165,7 +165,99 @@
             android:layout_height="wrap_content"
             android:id="@+id/relatorio_feito"
             android:text="80%"
-            android:textSize="30sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de Click's:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_clicks"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click's no 1º período:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_tempo1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click's no 2º período:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_tempo2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click's no 3º período:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatorio_tempo3"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -180,7 +272,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status:"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
             android:layout_marginBottom="10dp"/>
