@@ -45,6 +45,9 @@ public class Helper {
         tarefa.setDataIni(dataIni.getTime());
         Date dataFin = new Date(campoDataFin.getYear() - 1900,campoDataFin.getMonth(),campoDataFin.getDayOfMonth());
         tarefa.setDataFin(dataFin.getTime());
+        tarefa.setMinIni(System.currentTimeMillis() - dataIni.getTime());
+        tarefa.setclick(0);
+
 
         tarefa.setHoras(campoHoras.getValue());
 

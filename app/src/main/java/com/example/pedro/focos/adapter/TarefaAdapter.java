@@ -52,7 +52,7 @@ public class TarefaAdapter extends BaseAdapter {
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
         campoNome.setText(tarefa.getNome());
 
-        double tempoDecorrido = (((System.currentTimeMillis() - tarefa.getDataIni()) / (86400000.00))) * tarefa.getHoras();
+        double tempoDecorrido = (((System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni())) / (86400000.00))) * tarefa.getHoras();
 
         double tempoFoco;
         if (tarefa.getFoco() == 0)

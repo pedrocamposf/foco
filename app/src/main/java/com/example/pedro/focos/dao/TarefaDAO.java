@@ -29,7 +29,12 @@ public class TarefaDAO extends SQLiteOpenHelper {
                 " dataini INTEGER," +
                 " datafin INTEGER," +
                 " horas INTEGER," +
-                " foco INTEGER);";
+                " foco INTEGER," +
+                " minIni INTEGER," +
+                " click INTEGER," +
+                " tempo1 INTEGER," +
+                " tempo2 INTEGER," +
+                " tempo3 INTEGER);";
         db.execSQL(sql);
 
     }
@@ -56,6 +61,11 @@ public class TarefaDAO extends SQLiteOpenHelper {
         dados.put("datafin", tarefa.getDataFin());
         dados.put("horas", tarefa.getHoras());
         dados.put("foco", tarefa.getFoco());
+        dados.put("minIni", tarefa.getMinIni());
+        dados.put("click", tarefa.getclick());
+        dados.put("tempo1", tarefa.getTempo1());
+        dados.put("tempo2", tarefa.getTempo2());
+        dados.put("tempo3", tarefa.getTempo3());
         return dados;
     }
 
@@ -73,6 +83,11 @@ public class TarefaDAO extends SQLiteOpenHelper {
             tarefa.setDataFin(c.getLong(c.getColumnIndex("datafin")));
             tarefa.setHoras(c.getInt(c.getColumnIndex("horas")));
             tarefa.setFoco(c.getLong(c.getColumnIndex("foco")));
+            tarefa.setMinIni(c.getLong(c.getColumnIndex("minIni")));
+            tarefa.setclick(c.getInt(c.getColumnIndex("click")));
+            tarefa.setTempo1(c.getInt(c.getColumnIndex("tempo1")));
+            tarefa.setTempo2(c.getInt(c.getColumnIndex("tempo2")));
+            tarefa.setTempo3(c.getInt(c.getColumnIndex("tempo3")));
             tarefas.add(tarefa);
         }
         c.close();
