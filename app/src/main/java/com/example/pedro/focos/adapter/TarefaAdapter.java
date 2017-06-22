@@ -52,29 +52,33 @@ public class TarefaAdapter extends BaseAdapter {
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
         campoNome.setText(tarefa.getNome());
 
-        double tempoDecorrido = (((System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni())) / (86400000.00))) * tarefa.getHoras();
-
-        double tempoFoco;
-        if (tarefa.getFoco() == 0)
-            tempoFoco = tarefa.getFoco();
-        else
-            tempoFoco = (tarefa.getFoco() / (3600000.00));
-
         ImageView img1 = (ImageView) view.findViewById(R.id.img_ok);
         ImageView img2 = (ImageView) view.findViewById(R.id.img_atencao);
         ImageView img3 = (ImageView) view.findViewById(R.id.img_cuidado);
 
-        if ( tempoFoco > tempoDecorrido/3) {
+        long tempoDecorrido = System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni());
+
+        long tempoP = tempoDecorrido;
+        int daysP = (int) ((tempoDecorrido) / (1000*60*60*24)) + 1;
+        int horasP = daysP*tarefa.getHoras()*1000*60*60;
+
+        if (tempoDecorrido > 86400000)
+            tempoP = ((tempoDecorrido) / (1000*60*60*24))*tarefa.getHoras();
+
+        if (tempoP  > horasP)
+            tempoP = horasP;
+
+        if ( tarefa.getFoco() >= tempoP) {
             img1.setImageResource(R.drawable.ok);
         }
-        else if (tempoFoco > tempoDecorrido/2) {
-            img1.setImageResource(R.drawable.atencao);
-            img2.setImageResource(R.drawable.atencao);
-        }
-        else {
+        else if(3*tarefa.getFoco() < tempoP){
             img1.setImageResource(R.drawable.cuidado);
             img2.setImageResource(R.drawable.cuidado);
             img3.setImageResource(R.drawable.cuidado);
+        }
+        else {
+            img1.setImageResource(R.drawable.atencao);
+            img2.setImageResource(R.drawable.atencao);
         }
 
         return view;

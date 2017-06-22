@@ -67,19 +67,14 @@ public class RelatorioActivity extends AppCompatActivity {
         long days = ((tarefa.getDataFin() - tarefa.getDataIni()) / (1000*60*60*24)) + 1;
         int tempo = (int) (days*tarefa.getHoras());
 
-        double tempoDecorrido = (((System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni())) / (86400000.00))) * tarefa.getHoras();
+        long tempoDecorrido = System.currentTimeMillis() - (tarefa.getDataIni() + tarefa.getMinIni());
 
         esperado.setText(Integer.toString(tempo) + " hr");
 
-        double tempoFoco;
-        if (tarefa.getFoco() == 0)
-            tempoFoco = tarefa.getFoco();
-        else
-            tempoFoco = (tarefa.getFoco() / (3600000.00));
 
-        decorrido.setText(String.format("%.2f",tempoDecorrido) + " hr");
+        decorrido.setText(convertHora(tempoDecorrido));
 
-        feito.setText(String.format("%.2f",tempoFoco) + " hr");
+        feito.setText(convertHora(tarefa.getFoco()));
 
         click.setText(Integer.toString(tarefa.getclick()));
 
@@ -87,18 +82,36 @@ public class RelatorioActivity extends AppCompatActivity {
         tempo2.setText(Integer.toString(tarefa.getTempo2()));
         tempo3.setText(Integer.toString(tarefa.getTempo3()));
 
-        if ( tempoFoco > tempoDecorrido/3.00) {
+        long tempoP = tempoDecorrido;
+        int daysP = (int) ((tempoDecorrido) / (1000*60*60*24)) + 1;
+        int horasP = daysP*tarefa.getHoras()*1000*60*60;
+
+        if (tempoDecorrido > 86400000)
+            tempoP = ((tempoDecorrido) / (1000*60*60*24))*tarefa.getHoras();
+
+        if (tempoP  > horasP)
+            tempoP = horasP;
+
+
+        if ( tarefa.getFoco() >= tempoP) {
             img.setImageResource(R.drawable.ok);
         }
-        else if (tempoFoco > tempoDecorrido/2.00) {
-            img.setImageResource(R.drawable.atencao);
-        }
-        else {
+        else if(3*tarefa.getFoco() < tempoP){
             img.setImageResource(R.drawable.cuidado);
         }
+        else {
+            img.setImageResource(R.drawable.atencao);
+        }
+
 
     }
 
+    private String convertHora(long l) {
+        long segundos = ( l / 1000 ) % 60;      // se não precisar de segundos, basta remover esta linha.
+        long minutos  = ( l / 60000 ) % 60;     // 60000   = 60 * 1000
+        long hr    = l / 3600000;            // 3600000 = 60 * 60 * 1000
+        return String.format( "%02d:%02d:%02d", hr, minutos, segundos);
+    }
 
 
     private String validaPl(int i) {
