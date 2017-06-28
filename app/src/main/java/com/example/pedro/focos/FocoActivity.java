@@ -55,10 +55,10 @@ public class FocoActivity extends AppCompatActivity {
                 else
                     tarefa.setTempo3(tarefa.getTempo3() + 1);
 
-
+                finish();
                 if (tarefa.getId() != 0) {
                     dao.altera(tarefa);
-                    Toast.makeText(FocoActivity.this, Long.toString(tempoDecorrido) + "Mantenha o Foco!!" + Long.toString(tempo), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FocoActivity.this, "Mantenha o Foco!!", Toast.LENGTH_SHORT).show();
                 }
                 
                 Intent intentStopFoco = new Intent(FocoActivity.this, ListaTarefasActivity.class);
