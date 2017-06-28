@@ -69,16 +69,13 @@ public class TarefaAdapter extends BaseAdapter {
             tempoP = horasP;
 
         if ( tarefa.getFoco() >= tempoP) {
-            img1.setImageResource(R.drawable.ok);
+            img3.setImageResource(R.drawable.ok);
         }
         else if(3*tarefa.getFoco() < tempoP){
-            img1.setImageResource(R.drawable.cuidado);
-            img2.setImageResource(R.drawable.cuidado);
             img3.setImageResource(R.drawable.cuidado);
         }
         else {
-            img1.setImageResource(R.drawable.atencao);
-            img2.setImageResource(R.drawable.atencao);
+            img3.setImageResource(R.drawable.atencao);
         }
 
         return view;
